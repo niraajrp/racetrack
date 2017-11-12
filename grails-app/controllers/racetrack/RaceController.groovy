@@ -39,7 +39,8 @@ class RaceController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'race.label', default: 'Race'), raceInstance.id])
+                flash.message = "${params.name} Saved !"
+//                flash.message = message(code: 'default.created.message', args: [message(code: 'race.label', default: 'Race'), raceInstance.id])
                 redirect raceInstance
             }
             '*' { respond raceInstance, [status: CREATED] }
@@ -66,7 +67,8 @@ class RaceController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Race.label', default: 'Race'), raceInstance.id])
+                flash.message = "${params.name} Updated !"
+//                flash.message = message(code: 'default.updated.message', args: [message(code: 'Race.label', default: 'Race'), raceInstance.id])
                 redirect raceInstance
             }
             '*'{ respond raceInstance, [status: OK] }
@@ -85,7 +87,8 @@ class RaceController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Race.label', default: 'Race'), raceInstance.id])
+                flash.message = "Race Succesfully Deleted !"
+//                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Race.label', default: 'Race'), raceInstance.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }

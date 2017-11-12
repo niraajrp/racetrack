@@ -39,7 +39,8 @@ class RegistrationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'registration.label', default: 'Registration'), registrationInstance.id])
+                flash.message = "${params.name}'s Profile Saved !"
+//                flash.message = message(code: 'default.created.message', args: [message(code: 'registration.label', default: 'Registration'), registrationInstance.id])
                 redirect registrationInstance
             }
             '*' { respond registrationInstance, [status: CREATED] }
@@ -66,7 +67,8 @@ class RegistrationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Registration.label', default: 'Registration'), registrationInstance.id])
+                flash.message = "${params.name}'s Profile Updated !"
+//                flash.message = message(code: 'default.updated.message', args: [message(code: 'Registration.label', default: 'Registration'), registrationInstance.id])
                 redirect registrationInstance
             }
             '*'{ respond registrationInstance, [status: OK] }
@@ -85,7 +87,8 @@ class RegistrationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Registration.label', default: 'Registration'), registrationInstance.id])
+                flash.message = "Profile Successfully Deleted !"
+//                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Registration.label', default: 'Registration'), registrationInstance.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
