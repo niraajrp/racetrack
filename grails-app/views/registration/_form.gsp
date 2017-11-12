@@ -61,7 +61,7 @@
 		<g:message code="registration.createdAt.label" default="Created At" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="createdAt" precision="day"  value="${registrationInstance?.createdAt}"  />
+	<g:datePicker name="createdAt" precision="minute"  value="${registrationInstance?.createdAt}"  />
 
 </div>
 
