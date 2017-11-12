@@ -15,11 +15,11 @@ class Registration {
     String toString(){"${this.name}:${this.emailAddress}"}
 
     static constraints = {
-        name(maxLength:50,blank:false)
-        dateOfBirth(nullable:false, max: new Date())
-        gender(inList:["M", "F"], nullable: true)
-        postalAddress(maxLength:255)
-        emailAddress(maxLength:50,email:true)
+        name(minSize: 5, maxSize: 50, blank:false)
+        dateOfBirth(validator: {return (it < new Date())})
+        gender(inList:["M", "F"], nullable: false)
+        postalAddress(maxSize: 150, nullable: true)
+        emailAddress(maxSize: 50, email:true, nullable: false)
         race(nullable:false)
     }
 }

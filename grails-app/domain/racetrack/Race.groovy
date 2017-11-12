@@ -7,20 +7,22 @@ class Race {
     String state
     Float distance
     Float cost
-    Integer maxRunners = 1000
+    Integer maxRunners = 100
+    Float winnerPrizeAmount
 
     static hasMany = [registrations:Registration]
 
     String toString(){"${this.name}:${this.city},${this.state}"}
 
     static constraints = {
-        name(maxLength:50,blank:false)
-        maxRunners()
+        name(minSize: 5, maxSize: 50, blank:false)
         startDateTime(validator: {return (it > new Date())})
-        city(maxLength:30,blank:false)
+        city(minSize: 3, maxSize:  30,blank:false)
         state(inList:['Bagmati', 'Gandaki', 'Mechi', 'Sagarmatha', 'Narayani', 'Lumbini'],blank:false)
-        distance(min:3.1f,max:100f)
-        cost(min:0f,max:999.99f)
+        distance(min:0.1f,max:100f)
+        cost(min:0f,max:5999.99f)
+        winnerPrizeAmount(min:0f, blank:false)
+        maxRunners(min:2)
 
     }
 }

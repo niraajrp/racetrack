@@ -7,7 +7,7 @@
 		<g:message code="registration.name.label" default="Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="name" required="" value="${registrationInstance?.name}"/>
+	<g:textField name="name" maxlength="50" required="" value="${registrationInstance?.name}"/>
 
 </div>
 
@@ -29,12 +29,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registrationInstance, field: 'postalAddress', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: registrationInstance, field: 'postalAddress', 'error')} ">
 	<label for="postalAddress">
 		<g:message code="registration.postalAddress.label" default="Postal Address" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:textField name="postalAddress" required="" value="${registrationInstance?.postalAddress}"/>
+	<g:textArea name="postalAddress" cols="40" rows="5" maxlength="255" value="${registrationInstance?.postalAddress}"/>
 
 </div>
 
@@ -43,7 +43,7 @@
 		<g:message code="registration.emailAddress.label" default="Email Address" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field type="email" name="emailAddress" required="" value="${registrationInstance?.emailAddress}"/>
+	<g:field type="email" name="emailAddress" maxlength="50" required="" value="${registrationInstance?.emailAddress}"/>
 
 </div>
 

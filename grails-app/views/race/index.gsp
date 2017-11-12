@@ -26,8 +26,6 @@
 					
 						<g:sortableColumn property="name" title="${message(code: 'race.name.label', default: 'Name')}" />
 					
-						<g:sortableColumn property="maxRunners" title="${message(code: 'race.maxRunners.label', default: 'Max Runners')}" />
-					
 						<g:sortableColumn property="startDateTime" title="${message(code: 'race.startDateTime.label', default: 'Start Date Time')}" />
 					
 						<g:sortableColumn property="city" title="${message(code: 'race.city.label', default: 'City')}" />
@@ -35,6 +33,8 @@
 						<g:sortableColumn property="state" title="${message(code: 'race.state.label', default: 'State')}" />
 					
 						<g:sortableColumn property="distance" title="${message(code: 'race.distance.label', default: 'Distance')}" />
+					
+						<g:sortableColumn property="cost" title="${message(code: 'race.cost.label', default: 'Cost')}" />
 					
 					</tr>
 				</thead>
@@ -44,8 +44,6 @@
 					
 						<td><g:link action="show" id="${raceInstance.id}">${fieldValue(bean: raceInstance, field: "name")}</g:link></td>
 					
-						<td>${fieldValue(bean: raceInstance, field: "maxRunners")}</td>
-					
 						<td><g:formatDate date="${raceInstance.startDateTime}" /></td>
 					
 						<td>${fieldValue(bean: raceInstance, field: "city")}</td>
@@ -53,6 +51,8 @@
 						<td>${fieldValue(bean: raceInstance, field: "state")}</td>
 					
 						<td>${fieldValue(bean: raceInstance, field: "distance")}</td>
+					
+						<td>${fieldValue(bean: raceInstance, field: "cost")}</td>
 					
 					</tr>
 				</g:each>
