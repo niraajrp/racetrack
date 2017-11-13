@@ -37,7 +37,7 @@
 				<li class="fieldcontain">
 					<span id="startDateTime-label" class="property-label"><g:message code="race.startDateTime.label" default="Start Date Time" /></span>
 					
-						<span class="property-value" aria-labelledby="startDateTime-label"><g:formatDate date="${raceInstance?.startDateTime}" /></span>
+						<span class="property-value" aria-labelledby="startDateTime-label"><g:formatDate date="${raceInstance?.startDateTime}" format="dd-MMM-yyyy HH:mm"/></span>
 					
 				</li>
 				</g:if>
@@ -64,7 +64,7 @@
 				<li class="fieldcontain">
 					<span id="distance-label" class="property-label"><g:message code="race.distance.label" default="Distance" /></span>
 					
-						<span class="property-value" aria-labelledby="distance-label"><g:fieldValue bean="${raceInstance}" field="distance"/></span>
+						<span class="property-value" aria-labelledby="distance-label"><g:formatNumber number="${raceInstance?.distance}" format="##0.0 km"/></span>
 					
 				</li>
 				</g:if>
@@ -73,7 +73,8 @@
 				<li class="fieldcontain">
 					<span id="cost-label" class="property-label"><g:message code="race.cost.label" default="Cost" /></span>
 					
-						<span class="property-value" aria-labelledby="cost-label"><g:fieldValue bean="${raceInstance}" field="cost"/></span>
+						<span class="property-value" aria-labelledby="cost-label"><g:formatNumber number="${raceInstance?.cost}" format="₹ ###,##0.00"/></span>
+
 					
 				</li>
 				</g:if>
@@ -82,7 +83,7 @@
 				<li class="fieldcontain">
 					<span id="winnerPrizeAmount-label" class="property-label"><g:message code="race.winnerPrizeAmount.label" default="Winner Prize Amount" /></span>
 					
-						<span class="property-value" aria-labelledby="winnerPrizeAmount-label"><g:fieldValue bean="${raceInstance}" field="winnerPrizeAmount"/></span>
+						<span class="property-value" aria-labelledby="winnerPrizeAmount-label"><g:formatNumber number="${raceInstance?.winnerPrizeAmount}" format="₹ ###,##0.00"/></span>
 					
 				</li>
 				</g:if>
@@ -91,7 +92,7 @@
 				<li class="fieldcontain">
 					<span id="maxRunners-label" class="property-label"><g:message code="race.maxRunners.label" default="Max Runners" /></span>
 					
-						<span class="property-value" aria-labelledby="maxRunners-label"><g:fieldValue bean="${raceInstance}" field="maxRunners"/></span>
+						<span class="property-value" aria-labelledby="maxRunners-label"><g:formatNumber number="${raceInstance?.maxRunners}" format="###,##0"/></span>
 					
 				</li>
 				</g:if>

@@ -3788,3 +3788,11 @@ n:201:groovy/text/Template
 n:1919:org/apache/log4j/DefaultThrowableRenderer
 n:200:org/apache/log4j/spi/ThrowableRenderer
 n:1831:sl/org/objectweb/asm/tree/TryCatchBlockNode
+n:8485:org/codehaus/groovy/grails/plugins/web/api/TagLibraryApi
+n:16128:org/codehaus/groovy/grails/web/util/GrailsPrintWriter
+n:255:org/codehaus/groovy/grails/web/util/GrailsWrappedWriter
+n:352:org/codehaus/groovy/grails/support/encoding/EncodedAppenderWriterFactory
+n:1594:org/codehaus/groovy/grails/web/pages/GroovyPage$ConstantClosure
+n:4961:org/codehaus/groovy/grails/web/servlet/mvc/GrailsHttpSession
+n:532:org/codehaus/groovy/grails/support/encoding/EncodingStateRegistry
+n:267:org/codehaus/groovy/grails/web/servlet/mvc/ParameterCreationListener

@@ -37,7 +37,7 @@
 				<li class="fieldcontain">
 					<span id="dateOfBirth-label" class="property-label"><g:message code="registration.dateOfBirth.label" default="Date Of Birth" /></span>
 					
-						<span class="property-value" aria-labelledby="dateOfBirth-label"><g:formatDate date="${registrationInstance?.dateOfBirth}" /></span>
+						<span class="property-value" aria-labelledby="dateOfBirth-label"><g:formatDate date="${registrationInstance?.dateOfBirth}" format="dd-MMM-yyyy"/></span>
 					
 				</li>
 				</g:if>
@@ -82,7 +82,7 @@
 				<li class="fieldcontain">
 					<span id="createdAt-label" class="property-label"><g:message code="registration.createdAt.label" default="Created At" /></span>
 					
-						<span class="property-value" aria-labelledby="createdAt-label"><g:formatDate date="${registrationInstance?.createdAt}" /></span>
+						<span class="property-value" aria-labelledby="createdAt-label"><g:formatDate date="${registrationInstance?.createdAt}" format="dd-MMM-yyyy HH:mm"/></span>
 					
 				</li>
 				</g:if>

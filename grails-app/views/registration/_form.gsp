@@ -56,12 +56,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registrationInstance, field: 'createdAt', 'error')} required">
-	<label for="createdAt">
-		<g:message code="registration.createdAt.label" default="Created At" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="createdAt" precision="minute"  value="${registrationInstance?.createdAt}"  />
+%{--<div class="fieldcontain ${hasErrors(bean: registrationInstance, field: 'createdAt', 'error')} required">--}%
+	%{--<label for="createdAt">--}%
+		%{--<g:message code="registration.createdAt.label" default="Created At" />--}%
+		%{--<span class="required-indicator">*</span>--}%
+	%{--</label>--}%
+	%{--<g:datePicker name="createdAt" precision="minute"  value="${registrationInstance?.createdAt}"  />--}%
 
-</div>
+%{--</div>--}%
 

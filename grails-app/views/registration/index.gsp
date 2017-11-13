@@ -44,7 +44,7 @@
 					
 						<td><g:link action="show" id="${registrationInstance.id}">${fieldValue(bean: registrationInstance, field: "name")}</g:link></td>
 					
-						<td><g:formatDate date="${registrationInstance.dateOfBirth}" /></td>
+						<td><g:formatDate date="${registrationInstance.dateOfBirth}" format="dd-MMM-yyy" /></td>
 					
 						<td>${fieldValue(bean: registrationInstance, field: "gender")}</td>
 					
