@@ -7,16 +7,7 @@
 		<g:message code="race.name.label" default="Name" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="name" required="" value="${raceInstance?.name}"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: raceInstance, field: 'maxRunners', 'error')} required">
-	<label for="maxRunners">
-		<g:message code="race.maxRunners.label" default="Max Runners" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field name="maxRunners" type="number" value="${raceInstance.maxRunners}" required=""/>
+	<g:textField name="name" maxlength="50" required="" value="${raceInstance?.name}"/>
 
 </div>
 
@@ -25,7 +16,7 @@
 		<g:message code="race.startDateTime.label" default="Start Date Time" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="startDateTime" precision="day"  value="${raceInstance?.startDateTime}"  />
+	<g:datePicker name="startDateTime" precision="minute"  value="${raceInstance?.startDateTime}"  />
 
 </div>
 
@@ -34,7 +25,7 @@
 		<g:message code="race.city.label" default="City" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="city" required="" value="${raceInstance?.city}"/>
+	<g:textField name="city" maxlength="30" required="" value="${raceInstance?.city}"/>
 
 </div>
 
@@ -62,6 +53,24 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="cost" value="${fieldValue(bean: raceInstance, field: 'cost')}" required=""/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: raceInstance, field: 'winnerPrizeAmount', 'error')} required">
+	<label for="winnerPrizeAmount">
+		<g:message code="race.winnerPrizeAmount.label" default="Winner Prize Amount" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="winnerPrizeAmount" value="${fieldValue(bean: raceInstance, field: 'winnerPrizeAmount')}" required=""/>
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: raceInstance, field: 'maxRunners', 'error')} required">
+	<label for="maxRunners">
+		<g:message code="race.maxRunners.label" default="Max Runners" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="maxRunners" type="number" min="2" value="${raceInstance.maxRunners}" required=""/>
 
 </div>
 

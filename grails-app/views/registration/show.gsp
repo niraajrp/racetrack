@@ -5,6 +5,7 @@
 	<head>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'registration.label', default: 'Registration')}" />
+		<g:javascript library="racetrack" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
@@ -36,7 +37,7 @@
 				<li class="fieldcontain">
 					<span id="dateOfBirth-label" class="property-label"><g:message code="registration.dateOfBirth.label" default="Date Of Birth" /></span>
 					
-						<span class="property-value" aria-labelledby="dateOfBirth-label"><g:formatDate date="${registrationInstance?.dateOfBirth}" /></span>
+						<span class="property-value" aria-labelledby="dateOfBirth-label"><g:formatDate date="${registrationInstance?.dateOfBirth}" format="dd-MMM-yyyy"/></span>
 					
 				</li>
 				</g:if>
@@ -81,7 +82,7 @@
 				<li class="fieldcontain">
 					<span id="createdAt-label" class="property-label"><g:message code="registration.createdAt.label" default="Created At" /></span>
 					
-						<span class="property-value" aria-labelledby="createdAt-label"><g:formatDate date="${registrationInstance?.createdAt}" /></span>
+						<span class="property-value" aria-labelledby="createdAt-label"><g:formatDate date="${registrationInstance?.createdAt}" format="dd-MMM-yyyy HH:mm"/></span>
 					
 				</li>
 				</g:if>
@@ -90,7 +91,7 @@
 			<g:form url="[resource:registrationInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="edit" action="edit" resource="${registrationInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('Are you sure you want to delete this registration?')" />
 				</fieldset>
 			</g:form>
 		</div>

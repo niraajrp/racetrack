@@ -6,7 +6,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-class RegistrationController {
+class RegistrationController extends BaseController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -39,7 +39,8 @@ class RegistrationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'registration.label', default: 'Registration'), registrationInstance.id])
+                flash.message = "${params.name}'s Profile Saved !"
+//                flash.message = message(code: 'default.created.message', args: [message(code: 'registration.label', default: 'Registration'), registrationInstance.id])
                 redirect registrationInstance
             }
             '*' { respond registrationInstance, [status: CREATED] }
@@ -66,7 +67,8 @@ class RegistrationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Registration.label', default: 'Registration'), registrationInstance.id])
+                flash.message = "${params.name}'s Profile Updated !"
+//                flash.message = message(code: 'default.updated.message', args: [message(code: 'Registration.label', default: 'Registration'), registrationInstance.id])
                 redirect registrationInstance
             }
             '*'{ respond registrationInstance, [status: OK] }
@@ -85,7 +87,8 @@ class RegistrationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Registration.label', default: 'Registration'), registrationInstance.id])
+                flash.message = "Profile Successfully Deleted !"
+//                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Registration.label', default: 'Registration'), registrationInstance.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -101,4 +104,26 @@ class RegistrationController {
             '*'{ render status: NOT_FOUND }
         }
     }
+    @Transactional(readOnly=false)
+    def register() {
+        def registration = new Registration()
+        println params
+        println params.id
+        registration.properties = params
+        if (request.method == 'GET') {
+            def race = Race.get(params.id)
+            return ['registration':registration,'race':race]
+        }
+        else {
+            if(registration.save()) {
+                flash.message = "Successfully registered for ${registration.race.name}"
+                redirect(controller:'race',action:'search')
+            }
+            else {
+                def race = Race.get(params['race.id'])
+                return ['registration':registration,'race':race]
+            }
+        }
+    }
+    def beforeInterceptor = [action:this.&auth, except:'register']
 }

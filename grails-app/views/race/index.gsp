@@ -8,11 +8,14 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
+	<span class="menuButton">
+		<g:link action="search" controller="race">Search for Races</g:link>
+	</span>
 		<a href="#list-race" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+				<li><g:link class="create" action="create" controller="race"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="list-race" class="content scaffold-list" role="main">
@@ -26,8 +29,6 @@
 					
 						<g:sortableColumn property="name" title="${message(code: 'race.name.label', default: 'Name')}" />
 					
-						<g:sortableColumn property="maxRunners" title="${message(code: 'race.maxRunners.label', default: 'Max Runners')}" />
-					
 						<g:sortableColumn property="startDateTime" title="${message(code: 'race.startDateTime.label', default: 'Start Date Time')}" />
 					
 						<g:sortableColumn property="city" title="${message(code: 'race.city.label', default: 'City')}" />
@@ -35,6 +36,10 @@
 						<g:sortableColumn property="state" title="${message(code: 'race.state.label', default: 'State')}" />
 					
 						<g:sortableColumn property="distance" title="${message(code: 'race.distance.label', default: 'Distance')}" />
+					
+						<g:sortableColumn property="cost" title="${message(code: 'race.cost.label', default: 'Cost')}" />
+
+						<g:sortableColumn property="winnerPrizeAmount" title="${message(code: 'race.winnerPrizeAmount.label', default: 'Prize Amount')}" />
 					
 					</tr>
 				</thead>
@@ -44,15 +49,19 @@
 					
 						<td><g:link action="show" id="${raceInstance.id}">${fieldValue(bean: raceInstance, field: "name")}</g:link></td>
 					
-						<td>${fieldValue(bean: raceInstance, field: "maxRunners")}</td>
-					
-						<td><g:formatDate date="${raceInstance.startDateTime}" /></td>
+						<td><g:formatDate date="${raceInstance.startDateTime}" format="dd-MMM-yyy HH:mm" /></td>
 					
 						<td>${fieldValue(bean: raceInstance, field: "city")}</td>
 					
 						<td>${fieldValue(bean: raceInstance, field: "state")}</td>
 					
-						<td>${fieldValue(bean: raceInstance, field: "distance")}</td>
+						%{--<td>${fieldValue(bean: raceInstance, field: "distance")}</td>--}%
+						<td><g:formatNumber number="${raceInstance?.distance}" format="##0.0 km"/></td>
+					
+						%{--<td>${fieldValue(bean: raceInstance, field: "cost")}</td>--}%
+						<td><g:formatNumber number="${raceInstance?.cost}" format="₹ ###,##0.00"/></td>
+
+						<td><g:formatNumber number="${raceInstance?.winnerPrizeAmount}" format="₹ ###,##0.00"/></td>
 					
 					</tr>
 				</g:each>
