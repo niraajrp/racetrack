@@ -104,5 +104,15 @@ class RaceController {
             '*'{ render status: NOT_FOUND }
         }
     }
+    def search(){
+        println ">>>>>>>>>>search-controller"
+        if (request.method == 'POST') {
+            println ">>>>>>>>>>search-controller>>>inside"
+            println params.city
+
+            render(view:'index', model:[ raceInstanceList: Race.findAllByCityLike('%' + params.city + '%')])
+        }
+
+    }
 }
 

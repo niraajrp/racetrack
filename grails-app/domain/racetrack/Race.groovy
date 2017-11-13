@@ -1,5 +1,7 @@
 package racetrack
 
+import net.sf.ehcache.config.Searchable
+
 class Race {
     String name
     Date startDateTime
