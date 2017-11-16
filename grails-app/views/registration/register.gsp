@@ -14,6 +14,9 @@ charset=UTF-8"/>
 <title>Register</title>
 </head>
 <body>
+<div class="nav">
+    <g:render template="/adminmenubar" />
+</div>
 <div class="body">
 <h1>Register for ${race.name} </h1>
 <em>Start Date:

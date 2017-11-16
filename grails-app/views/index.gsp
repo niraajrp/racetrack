@@ -1,6 +1,6 @@
-<%
-    response.sendRedirect(request.getContextPath()+"/race/search");
-%>
+%{--<%--}%
+    %{--response.sendRedirect(request.getContextPath()+"/race/search");--}%
+%{--%>--}%
 <!DOCTYPE html>
 <html>
 	<head>

@@ -108,9 +108,20 @@ class RaceController extends BaseController {
         println ">>>>>>>>>>search-controller"
         if (request.method == 'POST') {
             println ">>>>>>>>>>search-controller>>>inside"
+            println params.username
             println params.city
+            println params.name
 
-            render(view:'searchresults', model:[ raceInstanceList: Race.findAllByCityLike('%' + params.city + '%')])
+            def criteria = Race.createCriteria()
+            def results = criteria {
+                and {
+                    like('city', '%' + params.city + '%')
+                    like('name', '%' + params.name + '%')
+
+                }
+            }
+
+            render(view:'searchresults', model:[ raceInstanceList: results])
         }
 
     }

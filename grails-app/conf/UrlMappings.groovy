@@ -7,8 +7,8 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/index")
-//        "/"(view:"/race/index")
+//        "/"(view:"/index")
+      "/"(controller: 'race', action: 'search')
         "500"(view:'/error')
 	}
 }

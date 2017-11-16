@@ -17,6 +17,7 @@ class Race {
     String toString(){"${this.name}:${this.city},${this.state}"}
 
     static constraints = {
+       // version true
         name(minSize: 5, maxSize: 50, blank:false)
         startDateTime(validator: {return (it > new Date())})
         city(minSize: 3, maxSize:  30,blank:false)

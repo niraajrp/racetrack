@@ -12,7 +12,7 @@ class UserController extends BaseController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond User.list(params), model:[userInstanceCount: User.count()]
+        respond User.list(params), model: [userInstanceCount: User.count()]
     }
 
     def show(User userInstance) {
@@ -31,15 +31,16 @@ class UserController extends BaseController {
         }
 
         if (userInstance.hasErrors()) {
-            respond userInstance.errors, view:'create'
+            respond userInstance.errors, view: 'create'
             return
         }
 
-        userInstance.save flush:true
+        userInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
+                flash.message = "${params.username}'s Credientials Saved !"
+               // flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
                 redirect userInstance
             }
             '*' { respond userInstance, [status: CREATED] }
@@ -58,18 +59,19 @@ class UserController extends BaseController {
         }
 
         if (userInstance.hasErrors()) {
-            respond userInstance.errors, view:'edit'
+            respond userInstance.errors, view: 'edit'
             return
         }
 
-        userInstance.save flush:true
+        userInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
+                flash.message = "${params.username}'s Credientials Updated !"
+                //flash.message = message(code: 'default.updated.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
                 redirect userInstance
             }
-            '*'{ respond userInstance, [status: OK] }
+            '*' { respond userInstance, [status: OK] }
         }
     }
 
@@ -81,14 +83,15 @@ class UserController extends BaseController {
             return
         }
 
-        userInstance.delete flush:true
+        userInstance.delete flush: true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
-                redirect action:"index", method:"GET"
+                flash.message = "User - ${params.username} has been Deleted !"
+                //flash.message = message(code: 'default.deleted.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -98,30 +101,29 @@ class UserController extends BaseController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
     def login = {
         if (request.method == "GET") {
             session.username = null
             def user = new User()
-        }
-        else {
+        } else {
             def user = User.findByUsernameAndPassword(params.username, params.password)
             if (user) {
                 session.username = user.username
-                redirect(controller:'race')
-            }
-            else {
+                redirect(controller: 'race', action: 'search')
+            } else {
                 flash['message'] = 'Please enter a valid user ID and password'
             }
         }
     }
     def logout = {
-        session.invalidate()
+        session.username=null
         flash['message'] = 'Successfully logged out'
-        redirect(controller:'race', action:'search')
+        redirect(controller: 'race', action: 'search')
     }
-    def beforeInterceptor = [action:this.&auth, except:['login', 'logout']]
+    def beforeInterceptor = [action: this.&auth, except: ['login', 'logout']]
+
 }
 

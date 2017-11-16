@@ -16,14 +16,14 @@ class RaceTrackLibTagLib {
  *
  * @see java.text.SimpleDateFormat
  */
-    def formatDate = { attrs ->
+    def deerwalkDate = { attrs ->
         def date = attrs.get('date')
         if (!date) {
             date = new Date()
         }
         def format = attrs.get('format')
         if (!format) {
-            format = "yyyy-MM-dd HH:mm:ss z"
+            format = "yyyy-MM-dd"
         }
         out << new java.text.SimpleDateFormat(format).format(date)
     }
@@ -38,7 +38,7 @@ class RaceTrackLibTagLib {
  *
  * @see java.text.DecimalFormat
  */
-    def formatNumber = { attrs ->
+    def deerwalkFormat = { attrs ->
         def number = attrs.get('number')
         if (!number) {
             number = new Double(0)

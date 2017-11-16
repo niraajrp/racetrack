@@ -14,6 +14,9 @@ charset=UTF-8"/>
     <title>Races Meeting Your Criteria</title>
 </head>
 <body>
+<div class="nav">
+    <g:render template="/adminmenubar" />
+</div>
 <div class="body">
     <h1>Search Results</h1>
     <h2>

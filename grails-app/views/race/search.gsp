@@ -6,10 +6,10 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="layout" content="main" />
+    %{--<meta name="layout" content="main" />--}%
     <title>Search for Races</title>
 
 </head>
@@ -18,13 +18,13 @@
 <div class="nav">
     <g:render template="/adminmenubar" />
 </div>
-<div class="body">
+<div class="body" align="center">
+    <g:if test="${flash.message}">
+        <div class="message">${flash.message}</div>
+    </g:if>
 <h1>Search for Races</h1>
-<g:if test="${flash.message}">
-    <div class="message">${flash.message}</div>
-</g:if>
-<g:form action="search" method="post" >
-    <div class="dialog">
+<g:form action="search" method="post">
+    <div class="dialog" align="center">
         <table>
             <tr class='prop'>
                 <td valign='top' class='name'>
@@ -34,10 +34,20 @@
                     <input type="text" maxlength='30' name='city'>
                 </input>
                 </td>
+
+                <td valign='top' class='name'>
+                    <label for='name'>Race Name:</label>
+                </td>
+                <td valign='top' class='value'>
+                    <input type="text" maxlength='10' name='name'>
+                </input>
+                </td>
+
             </tr>
         </table>
     </div>
-    <div class="buttons">
+    <br>
+    <div class="buttons" align="center">
     <input type="submit" value="Search" class="formbutton"></input>
     </div>
 </g:form>

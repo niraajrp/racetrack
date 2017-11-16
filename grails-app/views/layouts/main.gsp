@@ -16,10 +16,48 @@
 		<asset:javascript src="application.js"/>
 		<g:layoutHead/>
 	</head>
+<style>
+body {
+	background: url(runner.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: sans-serif;
+
+	height: 100%;
+	width: 100%;
+
+	background-position: center;
+	position: relative;
+	top: 5%;
+	left: 17%;
+	margin-top: -100px;
+	margin-left: -200px;
+}
+table{
+	position: relative;
+	background: #f5f5f5;
+	border-collapse: separate;
+	box-shadow: inset 0 1px 0 #fff;
+	font-size: 12px;
+	line-height: 24px;
+	margin:30px auto;
+	text-align: center;
+	width: 100%;
+}
+
+
+tbody:hover tr:hover td {
+	color: blue;
+	/*text-shadow: 0 1px 0 #fff;*/
+}
+</style>
 	<body>
+
 		<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
+		<div id="spinner" class="spinner" style="display:none"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 	</body>
 </html>
